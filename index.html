@@ -268,38 +268,9 @@
             visibility: hidden !important;
         }
         
-        /* Special handling for Questions slide (last slide with data-timing="120") */
-        .reveal .slides section[data-timing="120"]:last-of-type {
-            position: relative !important;
-            z-index: 10 !important;
+        /* Special handling for Questions slide (Q&A slide) - simplified */
+        .reveal .slides section#qa-slide {
             background: var(--bg-dark) !important;
-            contain: layout style paint !important;
-            isolation: isolate !important;
-        }
-        
-        /* Questions slide when present - make sure it's visible */
-        .reveal .slides section[data-timing="120"]:last-of-type.present {
-            position: relative !important;
-            left: auto !important;
-            top: auto !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-            display: block !important;
-        }
-        
-        /* Questions slide when not present - hide it */
-        .reveal .slides section[data-timing="120"]:last-of-type:not(.present) {
-            position: absolute !important;
-            left: -9999px !important;
-            top: -9999px !important;
-            visibility: hidden !important;
-            opacity: 0 !important;
-        }
-        
-        /* Ensure Questions slide content is properly contained */
-        .reveal .slides section[data-timing="120"]:last-of-type * {
-            position: relative !important;
-            z-index: 1 !important;
         }
         
         /* Ensure content is visible and readable */
@@ -2197,7 +2168,7 @@ Create functional replica</code></pre>
             </section>
 
             <!-- Slide 18: Q&A / Contact -->
-            <section data-timing="120">
+            <section data-timing="120" id="qa-slide">
                 <h2>Questions?</h2>
                 
                 <div class="two-column">
@@ -2283,7 +2254,7 @@ Create functional replica</code></pre>
             controls: true,
             progress: true,
             center: true, // Ensure content is centered
-            slideNumber: 'c',
+            slideNumber: 'c/t',
             showSlideNumber: 'all',
             transition: 'slide',
             transitionSpeed: 'default',
@@ -2349,6 +2320,141 @@ Create functional replica</code></pre>
             autoAnimateDuration: 0.8,
             display: 'block',
             hideAddressBar: true
+        });
+        
+        // Debug Q&A slide accessibility
+        Reveal.addEventListener('ready', function() {
+            console.log('RevealJS initialized successfully');
+            console.log('Total slides detected:', Reveal.getTotalSlides());
+            
+            // List all slides
+            const allSections = document.querySelectorAll('.reveal .slides section');
+            console.log('All sections found:', allSections.length);
+            allSections.forEach((section, index) => {
+                console.log(`Slide ${index + 1}:`, section.id || section.querySelector('h2')?.textContent || 'No title');
+            });
+            
+            // Check if slides div is properly structured
+            const slidesDiv = document.querySelector('.reveal .slides');
+            if (slidesDiv) {
+                console.log('Slides div found:', slidesDiv);
+                console.log('Slides div children count:', slidesDiv.children.length);
+                console.log('Slides div innerHTML length:', slidesDiv.innerHTML.length);
+            } else {
+                console.error('Slides div not found!');
+            }
+            
+            // Ensure Q&A slide is accessible
+            const qaSlide = document.getElementById('qa-slide');
+            if (qaSlide) {
+                console.log('Q&A slide found:', qaSlide);
+                console.log('Q&A slide index:', Array.from(allSections).indexOf(qaSlide));
+                console.log('Q&A slide parent:', qaSlide.parentElement);
+                console.log('Is Q&A slide inside slides div?', slidesDiv?.contains(qaSlide));
+            } else {
+                console.error('Q&A slide not found!');
+            }
+            
+            // Check current state
+            const state = Reveal.getState();
+            console.log('Current state:', state);
+            
+            // Force RevealJS to re-scan slides
+            Reveal.sync();
+            
+            // Additional diagnostic: Check if all slides are properly nested
+            console.log('=== HTML STRUCTURE DIAGNOSTIC ===');
+            const revealDiv = document.querySelector('.reveal');
+            const slidesDivCheck = document.querySelector('.reveal .slides');
+            const allSectionsInReveal = document.querySelectorAll('.reveal section');
+            const allSectionsInSlides = document.querySelectorAll('.reveal .slides section');
+            
+            console.log('Reveal div found:', !!revealDiv);
+            console.log('Slides div found:', !!slidesDivCheck);
+            console.log('All sections in reveal div:', allSectionsInReveal.length);
+            console.log('All sections in slides div:', allSectionsInSlides.length);
+            
+            if (allSectionsInReveal.length !== allSectionsInSlides.length) {
+                console.error('❌ MISMATCH: Some sections are outside the slides div!');
+                console.log('Sections outside slides div:', allSectionsInReveal.length - allSectionsInSlides.length);
+            } else {
+                console.log('✅ All sections are properly inside the slides div');
+            }
+            
+            // Check if Q&A slide is the last one
+            const lastSection = allSectionsInSlides[allSectionsInSlides.length - 1];
+            if (lastSection && lastSection.id === 'qa-slide') {
+                console.log('✅ Q&A slide is the last section');
+            } else {
+                console.log('❌ Q&A slide is NOT the last section');
+                console.log('Last section:', lastSection?.id || lastSection?.querySelector('h2')?.textContent);
+            }
+            console.log('================================');
+            
+            // Add manual navigation button for testing
+            const navButton = document.createElement('button');
+            navButton.innerHTML = 'Go to Q&A';
+            navButton.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #0d9488;
+                color: white;
+                border: none;
+                padding: 10px 15px;
+                border-radius: 5px;
+                cursor: pointer;
+                z-index: 1000;
+                font-size: 14px;
+            `;
+            navButton.addEventListener('click', function() {
+                console.log('Manual navigation to Q&A slide');
+                Reveal.slide(Reveal.getTotalSlides() - 1);
+            });
+            document.body.appendChild(navButton);
+        });
+        
+        // Debug slide navigation
+        Reveal.addEventListener('slidechanged', function(event) {
+            console.log('Slide changed to:', event.indexh, event.indexv);
+            console.log('Total slides:', Reveal.getTotalSlides());
+            console.log('Current slide element:', event.currentSlide);
+            
+            if (event.currentSlide && event.currentSlide.id === 'qa-slide') {
+                console.log('Q&A slide is now active');
+            }
+        });
+        
+        // Add keyboard shortcut to force navigation to Q&A slide
+        document.addEventListener('keydown', function(e) {
+            // Ctrl+Q to go to Q&A slide
+            if (e.ctrlKey && e.key === 'q') {
+                e.preventDefault();
+                console.log('Forcing navigation to Q&A slide');
+                const totalSlides = Reveal.getTotalSlides();
+                console.log('Total slides:', totalSlides);
+                Reveal.slide(totalSlides - 1); // Go to last slide
+            }
+            
+            // Ctrl+End to go to Q&A slide
+            if (e.ctrlKey && e.key === 'End') {
+                e.preventDefault();
+                console.log('Ctrl+End pressed - going to last slide');
+                Reveal.slide(Reveal.getTotalSlides() - 1);
+            }
+            
+            // Debug right arrow key
+            if (e.key === 'ArrowRight') {
+                const state = Reveal.getState();
+                console.log('Right arrow pressed. Current slide:', state);
+                console.log('Can go right?', Reveal.availableRoutes().right);
+            }
+            
+            // Debug End key
+            if (e.key === 'End') {
+                console.log('End key pressed - going to last slide');
+                Reveal.slide(Reveal.getTotalSlides() - 1);
+            }
         });
     </script>
 </body>
