@@ -36,6 +36,7 @@ Visit: **[https://akshaymittal143.github.io/lascon2025-ai-security/](https://aks
 - **Duration:** 20 minutes
 - **Total Slides:** 18
 - **Format:** Three main sections
+- **Visual Elements:** Professional diagrams, charts, and speaker photo
 
 ### Part 1: AI/ML Reshaping DevSecOps (7 min)
 - Intelligent DevSecOps
@@ -65,7 +66,15 @@ Visit: **[https://akshaymittal143.github.io/lascon2025-ai-security/](https://aks
 
 - `index.html` - Main presentation file (RevealJS)
 - `images/` - Visual assets and diagrams
+  - `ai_devsecops_transformation.png` - AI transformation diagram (Slide 3)
+  - `cnapp_architecture.png` - CNAPP architecture diagram (Slide 8)
+  - `ai_attack_vectors.png` - Attack vectors diagram (Slide 10)
+  - `defense_layers.png` - Defense layers framework (Slide 15)
+  - `Akshay_Mittal_Profile.jpg` - Speaker photo (Slide 1)
 - `data/` - Supporting data files (CSV format)
+  - `ai_security_case_studies.csv` - Real-world case studies and ROI data
+  - `ai_security_metrics_comparison.csv` - Performance metrics comparison
+  - `owasp_llm_top10_mitigations.csv` - OWASP LLM Top 10 vulnerabilities and mitigations
 - `README.md` - This file
 
 ## 📄 License
@@ -74,7 +83,7 @@ MIT License - See LICENSE file for details
 
 ## 📧 Contact
 
-- **Email:** akshay.mittal@example.com
+- **Email:** akshay.mittal@ieee.org
 - **LinkedIn:** [linkedin.com/in/akshaymittal](https://linkedin.com/in/akshaymittal143)
 - **Twitter/X:** [@akshaymittal](https://twitter.com/akshaymittal143)
 - **GitHub:** [github.com/akshaymittal143](https://github.com/akshaymittal143)

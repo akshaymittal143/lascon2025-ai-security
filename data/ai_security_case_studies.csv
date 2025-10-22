@@ -1,0 +1,6 @@
+Organization Type,Challenge,AI Solution Deployed,Key Results,Implementation Timeline
+Financial Services,Privileged access abuse,AI-driven identity threat intelligence,"72% reduction in abuse incidents, 68% faster detection, 3.2x ROI",3 years
+Healthcare Provider,Alert fatigue from false positives,AI SIEM with UEBA,"91% reduction in false positives, 76% faster certifications",18 months
+Manufacturing (12K employees),Manual provisioning delays,AI-driven identity management,"$420K saved in provisioning, $1.2M breach costs avoided, 315% ROI",18 months
+Multi-Cloud Enterprise,Threat modeling couldn't scale,AI threat modeling framework,"83% faster modeling, 26% more critical threats found",Ongoing/Continuous
+Cloud-Native Fintech,Dynamic microservices security,Zero Trust + AI runtime protection,"Improved detection speed, reduced response time",Ongoing/Continuous

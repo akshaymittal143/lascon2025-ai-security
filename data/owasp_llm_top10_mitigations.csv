@@ -1,0 +1,11 @@
+Rank,Vulnerability,Risk Level,Primary Mitigation
+1,Prompt Injection,Critical,"Input validation, context-aware filtering, privilege separation"
+2,Insecure Output Handling,High,"Output encoding, validation, content filtering"
+3,Training Data Poisoning,High,"Data validation, provenance tracking, anomaly detection"
+4,Model Denial of Service,Medium,"Rate limiting, resource quotas, input validation"
+5,Supply Chain Vulnerabilities,Critical,"SBOM, dependency scanning, verified sources"
+6,Sensitive Information Disclosure,High,"Data sanitization, PII filtering, access controls"
+7,Insecure Plugin Design,High,"Secure design, input validation, least privilege"
+8,Excessive Agency,High,"Authorization boundaries, action approval, monitoring"
+9,Overreliance,Medium,"Human oversight, confidence scoring, validation"
+10,Model Theft,High,"Access controls, API rate limiting, model watermarking"
