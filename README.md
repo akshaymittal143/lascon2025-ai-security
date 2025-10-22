@@ -1,19 +1,19 @@
 # AI-Powered Security: Strengthening Cloud-Native Applications Against Emerging Threats
 
 **LASCON 2025 Presentation**  
-**Speaker:** [Your Name]  
+**Speaker:** Akshay Mittal  
 **Date:** October 23, 2025  
 **Duration:** 20 minutes
 
 ## 🎯 Viewing the Presentation
 
 ### Online (Recommended)
-Visit: **[https://[yourusername].github.io/lascon2025-ai-security/](https://[yourusername].github.io/lascon2025-ai-security/)**
+Visit: **[https://akshaymittal143.github.io/lascon2025-ai-security/](https://akshaymittal143.github.io/lascon2025-ai-security/)**
 
 ### Locally
 1. Clone this repository:
    ```bash
-   git clone https://github.com/[yourusername]/lascon2025-ai-security.git
+   git clone https://github.com/akshaymittal143/lascon2025-ai-security.git
    cd lascon2025-ai-security
    ```
 2. Open `index.html` in a modern web browser
@@ -70,14 +70,14 @@ Visit: **[https://[yourusername].github.io/lascon2025-ai-security/](https://[you
 
 ## 📄 License
 
-[Choose appropriate license: MIT, Apache 2.0, CC BY 4.0, etc.]
+MIT License - See LICENSE file for details
 
 ## 📧 Contact
 
-- **Email:** [your.email@example.com]
-- **LinkedIn:** [linkedin.com/in/yourprofile]
-- **Twitter/X:** [@yourhandle]
-- **GitHub:** [github.com/yourusername]
+- **Email:** akshay.mittal@example.com
+- **LinkedIn:** [linkedin.com/in/akshaymittal](https://linkedin.com/in/akshaymittal143)
+- **Twitter/X:** [@akshaymittal](https://twitter.com/akshaymittal143)
+- **GitHub:** [github.com/akshaymittal143](https://github.com/akshaymittal143)
 
 ## 🙏 Acknowledgments
 
